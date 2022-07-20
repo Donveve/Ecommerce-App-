@@ -8,6 +8,8 @@ import Register from './pages/Register/Register';
 import { useDispatch } from 'react-redux';
 import { auth } from './utils/firebase';
 import { setuser } from './redux/actions';
+import SingleProduct from './pages/SingleProduct/SingleProduct';
+import Checkout from './pages/Checkout/Checkout';
 
 function App() {
   let dispatch = useDispatch();
@@ -25,6 +27,26 @@ function App() {
     <div className="App">
       <Router>
         <Routes>
+          <Route
+            path="/checkout"
+            element={
+              <div>
+                <Header />
+                <Checkout />
+              </div>
+            }
+          />
+          <Route />
+          <Route
+            path="/product/:id"
+            element={
+              <div>
+                <Header />
+                <SingleProduct />
+              </div>
+            }
+          />
+          <Route />
           <Route
             path="/"
             element={

@@ -2,8 +2,23 @@ import React from 'react';
 import './Product.css';
 import { Link } from 'react-router-dom';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import { useDispatch } from 'react-redux';
+import { addToBasket } from '../../redux/actions';
 
 function Product({ id, title, image, price, rating, specification, details }) {
+  const dispatch = useDispatch();
+  const onAddItemToBasket = () => {
+    const item = {
+      id,
+      title,
+      image,
+      price,
+      rating,
+      specification,
+      details,
+    };
+    dispatch(addToBasket(item));
+  };
   return (
     <div className="product">
       <div className="info">
@@ -23,7 +38,7 @@ function Product({ id, title, image, price, rating, specification, details }) {
         </div>
       </div>
       <img src={image} alt="" />
-      <button>
+      <button onClick={onAddItemToBasket}>
         <i>
           <AddShoppingCartIcon />
           Add to Basket

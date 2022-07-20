@@ -5,6 +5,16 @@ import {
   createUserWithEmailAndPassword,
 } from 'firebase/auth';
 
+export const addToBasket = (item) => ({
+  type: types.ADD_TO_BASKET,
+  payload: item,
+});
+
+export const removeFromBasket = (id) => ({
+  type: types.REMOVE_FROM_BASKET,
+  payload: id,
+});
+
 const registerStart = () => ({
   type: types.REGISTER_START,
 });
@@ -80,7 +90,7 @@ export const logoutinitiate = () => {
       .signOut()
       .then((resp) => dispatch(logoutSuccess()))
       .catch((error) => {
-        dispatch(loginError(error.message));
+        dispatch(logoutError(error.message));
       });
   };
 };
